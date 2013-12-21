@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React with navigation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="thirdparty/dist/css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>React</h1>
+            <p>with client-side routing</p>
+        </div>
+    </div>
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#One">One</a></li>
+              <li><a href="#Two">Two</a></li>      
+            </ul>
+          </div>
+        </nav>
+        <div id="app" />
+    </div>
+    <script src="thirdparty/jquery.js"></script>
+    <script src="thirdparty/react.js"></script>
+    <script src="thirdparty/JSXTransformer.js"></script>
+    <script src="thirdparty/routie.js"></script>
+    <script src="thirdparty/dist/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        var One = React.createClass({
+            render: function () {
+                return React.DOM.h1(null,"One");
+            }
+        });
+
+        var Two = React.createClass({
+            render: function () {
+                return React.DOM.h1(null,"Two");
+            }
+        });
+
+        routie({
+        'one': function() {
+            React.renderComponent(One(), 
+                document.getElementById('app'));
+        },
+        'two': function() {
+            React.renderComponent(Two(), 
+                document.getElementById('app'));
+        }
+    });
+    </script>
+  </body>
+</html>
